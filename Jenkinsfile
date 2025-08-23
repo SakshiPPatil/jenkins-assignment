@@ -49,12 +49,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-           
-            mail to: 'your_email@example.com',
-                 subject: "Jenkins Build ${currentBuild.fullDisplayName} Status: ${currentBuild.result}",
-                 body: "The build has finished with status: ${currentBuild.result}"
-        }
-    }
 }
