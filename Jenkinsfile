@@ -28,7 +28,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['4837f28e-fc73-47b5-b78f-dadbbdcd73e4']) {
+                sshagent(['6645fd39-248b-4d3c-af95-c7c5fe3d2aa9']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
                             rm -rf /home/ubuntu/app
