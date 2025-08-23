@@ -35,7 +35,8 @@ pipeline {
                             git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
                             cd /home/ubuntu/app
                             npm install
-                            npm start
+                           pm2 kill || true
+                           pm2 start server.js --name myapp
                         EOF
                     """
                 }
