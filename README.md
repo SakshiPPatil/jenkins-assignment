@@ -100,10 +100,10 @@ output
          sudo apt-get install nginx -y
    ```
 
-   2) create the configuration file <br/>
+  
 
  
-   <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4b0db2e3-1a01-4ee2-bc92-d895da0b458f" />
+ 
 
 
 
