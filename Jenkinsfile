@@ -36,14 +36,15 @@ pipeline {
             steps {
               
                 sshagent(['4837f28e-fc73-47b5-b78f-dadbbdcd73e4']) {
-                    sh """
+                   sh """
                     ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
-                        cd /var/www/nextastra/devlogin.nextastra.com
-                        npm install
-                        pm2 kill || true
-                        npm start
+                    
+                     git clone https://github.com/SakshiPPatil/jenkins-assignment.git /var/www/jenkins
+                     cd /var/www/jenkins
+                     npm install
+                    npm start
                     EOF
-                    """
+                """
                 }
             }
         }
