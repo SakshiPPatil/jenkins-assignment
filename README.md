@@ -88,7 +88,23 @@ output
 
 3) Implement Matrix-Based Security in Jenkins. <br/>
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7695d191-5453-4b63-9ac4-568cf23e1416" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7695d191-5453-4b63-9ac4-568cf23e1416" /> <br/>
+
+
+4) Deploy Using NGINX with SSL
+
+1) install nginx  <br>
+   
+
+   ```
+         sudo apt-get install nginx -y
+   ```
+
+   2) create the configuration file <br/>
+
+ 
+   <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4b0db2e3-1a01-4ee2-bc92-d895da0b458f" />
+
 
 
     
