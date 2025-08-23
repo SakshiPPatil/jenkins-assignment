@@ -1,53 +1,45 @@
-
-
 pipeline {
     agent any
 
     environment {
-        
         DEPLOY_USER = 'ubuntu'
         DEPLOY_HOST = '34.203.233.215'
-        APP_PORT = '3000'
+        APP_PORT    = '3000'
     }
 
     stages {
         stage('Checkout') {
             steps {
-              
                 git url: 'https://github.com/SakshiPPatil/jenkins-assignment.git', branch: 'main'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-             
                 sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                
                 sh 'npm test || true'
             }
         }
 
         stage('Deploy') {
             steps {
-              
                 sshagent(['4837f28e-fc73-47b5-b78f-dadbbdcd73e4']) {
-                   sh """
-                    ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
-                    
-                     git clone https://github.com/SakshiPPatil/jenkins-assignment.git /var/www/jenkins
-                     cd /var/www/jenkins
-                     npm install
-                    npm start
-                    EOF
-                """
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
+                            rm -rf /home/ubuntu/app
+                            git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
+                            cd /home/ubuntu/app
+                            npm install
+                            npm start
+                        EOF
+                    """
                 }
             }
         }
     }
-
 }
