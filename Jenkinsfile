@@ -8,6 +8,7 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/SakshiPPatil/jenkins-assignment.git', branch: 'main'
@@ -29,18 +30,22 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['6645fd39-248b-4d3c-af95-c7c5fe3d2aa9']) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
                             rm -rf /home/ubuntu/app
                             git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
                             cd /home/ubuntu/app
                             npm install
-                           pm2 kill || true
-                           pm2 start server.js --name myapp
+                            if ! command -v pm2 &> /dev/null; then
+                                sudo npm install -g pm2
+                            fi
+                            pm2 kill || true
+                            pm2 start server.js --name myapp
                         EOF
-                    """
+                    '''
                 }
             }
         }
+
     }
 }
