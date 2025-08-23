@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DEPLOY_USER = 'ubuntu'
-        DEPLOY_HOST = '54.243.27.220'
+        DEPLOY_HOST = '3.87.105.93'
         APP_PORT    = '3000'
     }
 
@@ -29,7 +29,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['6645fd39-248b-4d3c-af95-c7c5fe3d2aa9']) {
+                sshagent(['d4e81e6f-c743-41ed-bce7-485eee4cc9c9']) {
                     sh '''#!/bin/bash
 ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
 rm -rf /home/ubuntu/app
