@@ -30,18 +30,18 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['6645fd39-248b-4d3c-af95-c7c5fe3d2aa9']) {
-                    sh '''
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
-                            rm -rf /home/ubuntu/app
-                            git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
-                            cd /home/ubuntu/app
-                            npm install
-                            if ! command -v pm2 &> /dev/null; then
-                                sudo npm install -g pm2
-                            fi
-                            pm2 kill || true
-                            pm2 start server.js --name myapp
-                        EOF
+                    sh '''#!/bin/bash
+ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
+rm -rf /home/ubuntu/app
+git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
+cd /home/ubuntu/app
+npm install
+if ! command -v pm2 &> /dev/null; then
+    sudo npm install -g pm2
+fi
+pm2 delete all || true
+pm2 start server.js --name myapp
+EOF
                     '''
                 }
             }
