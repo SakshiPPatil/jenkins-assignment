@@ -1,12 +1,7 @@
-# Simple Node.js Frontend
 
-This is a simple Node.js + Express application that serves a static HTML file.
+# Set up a complete CI/CD workflow and deployment pipeline for a Node.js application with secureaccess and monitoring.
 
-## Run the app
+**Steps**
 
-```bash
-npm install
-npm start
-```
-
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+1) Clone and Validate Application:
+    
