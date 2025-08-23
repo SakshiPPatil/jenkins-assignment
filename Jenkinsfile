@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DEPLOY_USER = 'ubuntu'
-        DEPLOY_HOST = '34.203.233.215'
+        DEPLOY_HOST = '54.243.27.220'
         APP_PORT    = '3000'
     }
 
