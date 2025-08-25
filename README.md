@@ -100,7 +100,62 @@ output
          sudo apt-get install nginx -y
    ```
 
-  
+i)  Configure NGINX Reverse Proxy: <br/>
+
+
+```
+sudo nano /etc/nginx/sites-available/devlogin11
+
+add below content in this file
+
+server {
+    listen 80;
+    server_name devlogin.nextastra.com;
+
+    location / {
+        # Forward requests to the Node.js app
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
+ii) Enable the Configuration <br/>
+ Create a symbolic link to enable your new configuration and test it.<br/>
+
+```
+sudo ln -s /etc/nginx/sites-available/nextastra /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+
+iii)  Set up SSL with Let's Encrypt and Certbot: <br/>
+        First, you need to configure your domain with a DNS service like DuckDNS:
+```
+Step 1: Create an Account and Domain
+Go to the DuckDNS website.
+
+Log in using one of the available options like Google, GitHub, or Twitter.
+
+Once you're logged in, you'll see a page with a section to add a new domain.
+
+In the "domain" field, enter a unique name for your subdomain (e.g., devlogin11).
+
+Your domain will then be devlogin.duckdns.org. Make sure the current IP address is correct (it should auto-populate with your server's public IP).
+
+Click the add domain button.
+
+You should now see your new domain listed, along with a token at the top of the page. This token is very important, as it is used to authenticate requests to update your IP address. Keep this token private!
+
+```
+
+<img width="1722" height="946" alt="image" src="https://github.com/user-attachments/assets/1571c2f0-6e44-4c57-99fe-3744e1f43145" />
+
 
  
  
