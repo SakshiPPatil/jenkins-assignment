@@ -178,6 +178,13 @@ v) after successfully requesting a certificate: hit **https://devlogin11.duckdns
 
 <img width="1054" height="607" alt="image" src="https://github.com/user-attachments/assets/fb1ecc7f-7b63-4a85-ab77-39cfd99938c1" />   <br/>
 
+notes:
+add 443 -https port number on security group.<br/>
+becsause when ssl works it creates the domain with https because it provides the security between client and server (encrypted form) <br/>
+
+<img width="1510" height="549" alt="image" src="https://github.com/user-attachments/assets/2adcc83e-9da0-45de-b788-7e56eff1342d" />
+
+
 
 
  
