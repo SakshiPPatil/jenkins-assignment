@@ -1,12 +1,14 @@
 
-# Set up a complete CI/CD workflow and deployment pipeline for a Node.js application with secureaccess and monitoring.  <br/>
+# Set up a complete CI/CD workflow and deployment pipeline for a Node.js application with secureaccess and monitoring on jenkin.  <br/>
 
 **Steps**  <br/>
 
 1) Clone and Validate Application:  <br/>
         cloned repository into the aws server  <br/>
     ```
-        git clone  https://github.com/SakshiPPatil/jenkins-assignment.git
+    git clone  https://github.com/SakshiPPatil/jenkins-assignment.git    # not mandatory
+    sudo apt install nodejs -y
+    sudo apt install npm
     ```
 
 2) CI/CD Pipeline with Jenkins:  <br/>
@@ -27,12 +29,14 @@ sudo apt-get install jenkins -y
 Jenkins job or pipeline  <br/>
 
 ```
+# Jenkinfile
+
 pipeline {
     agent any
 
     environment {
         DEPLOY_USER = 'ubuntu'
-        DEPLOY_HOST = '54.243.27.220'
+        DEPLOY_HOST = '34.201.170.247'
         APP_PORT    = '3000'
     }
 
@@ -58,7 +62,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['6645fd39-248b-4d3c-af95-c7c5fe3d2aa9']) {
+                sshagent(['46a962c8-d986-4203-9318-cdd7adbf4525']) {
                     sh '''#!/bin/bash
 ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
 rm -rf /home/ubuntu/app
@@ -78,6 +82,7 @@ EOF
 
     }
 }
+
 
 ```
 
@@ -102,12 +107,10 @@ output
 
 i)  Configure NGINX Reverse Proxy: <br/>
 
-
-```
 sudo nano /etc/nginx/sites-available/devlogin11     # provide the same domain where it created in duckDNS website
 
 add below content in this file
-
+```
 server {
     listen 80;
     server_name devlogin11.duckdns.org;
