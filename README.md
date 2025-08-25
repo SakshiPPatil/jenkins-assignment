@@ -169,6 +169,14 @@ sudo certbot --nginx -d devlogin11.duckdns.org
 
 ```
 
+
+v) after successfully requesting a certificate: hit **https://devlogin11.duckdns.org/**  this domain on client
+<img width="1031" height="651" alt="Screenshot 2025-08-25 153653" src="https://github.com/user-attachments/assets/a4c60497-182d-49db-b0da-7d0dc0437769" />   <br/>
+
+<img width="1054" height="607" alt="image" src="https://github.com/user-attachments/assets/fb1ecc7f-7b63-4a85-ab77-39cfd99938c1" />   <br/>
+
+
+
  
  
 
