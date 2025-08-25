@@ -104,13 +104,13 @@ i)  Configure NGINX Reverse Proxy: <br/>
 
 
 ```
-sudo nano /etc/nginx/sites-available/devlogin11
+sudo nano /etc/nginx/sites-available/devlogin11     # provide the same domain where it created in duckDNS website
 
 add below content in this file
 
 server {
     listen 80;
-    server_name devlogin.nextastra.com;
+    server_name devlogin11.duckdns.org;
 
     location / {
         # Forward requests to the Node.js app
@@ -128,7 +128,7 @@ ii) Enable the Configuration <br/>
  Create a symbolic link to enable your new configuration and test it.<br/>
 
 ```
-sudo ln -s /etc/nginx/sites-available/nextastra /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/devlogin11 /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
@@ -156,6 +156,18 @@ You should now see your new domain listed, along with a token at the top of the 
 
 <img width="1722" height="946" alt="image" src="https://github.com/user-attachments/assets/1571c2f0-6e44-4c57-99fe-3744e1f43145" />
 
+
+
+iv)
+
+```
+# Install Certbot and the NGINX plugin
+sudo apt-get install certbot python3-certbot-nginx -y
+
+# Run Certbot to get and install the SSL certificate
+sudo certbot --nginx -d devlogin11.duckdns.org
+
+```
 
  
  
