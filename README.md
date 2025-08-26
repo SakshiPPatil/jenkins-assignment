@@ -9,6 +9,7 @@
     git clone  https://github.com/SakshiPPatil/jenkins-assignment.git    # not mandatory
     sudo apt install nodejs -y
     sudo apt install npm
+    install pm2
     ```
 
 2) CI/CD Pipeline with Jenkins:  <br/>
@@ -183,6 +184,14 @@ add 443 -https port number on security group.<br/>
 becsause when ssl works it creates the domain with https because it provides the security between client and server (encrypted form) <br/>
 
 <img width="1510" height="549" alt="image" src="https://github.com/user-attachments/assets/2adcc83e-9da0-45de-b788-7e56eff1342d" />
+
+
+add plugins:
+```
+git ,github
+ssh agent
+pipeline,pipeline groovy
+```
 
 
 
