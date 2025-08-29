@@ -49,3 +49,28 @@ EOF
 
     }
 }
+
+
+//delete this linies
+stage('Deploy') {
+            steps {
+                sshagent(['46a962c8-d986-4203-9318-cdd7adbf4525']) {
+                    sh '''#!/bin/bash
+ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_HOST} << 'EOF'
+rm -rf /home/ubuntu/app
+git clone https://github.com/SakshiPPatil/jenkins-assignment.git /home/ubuntu/app
+cd /home/ubuntu/app
+npm install
+if ! command -v pm2 &> /dev/null; then
+    sudo npm install -g pm2
+fi
+pm2 delete all || true
+pm2 start server.js --name myapp
+EOF
+                    '''
+                }
+            }
+        }
+
+    }
+}
